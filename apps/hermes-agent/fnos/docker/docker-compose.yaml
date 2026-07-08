@@ -1,0 +1,17 @@
+services:
+  hermes-agent:
+    image: ${DOCKER_MIRROR}docker.io/nousresearch/hermes-agent:${VERSION}
+    container_name: hermes-agent
+    network_mode: host
+    command: gateway run
+    volumes:
+      - ${TRIM_PKGVAR:?}/data:/opt/data
+      - ${TRIM_PKGVAR:?}/config:/opt/config
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - HERMES_DASHBOARD=1
+      - HERMES_DASHBOARD_BASIC_AUTH_USERNAME=${wizard_auth_username:-admin}
+      - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=${wizard_auth_password:-hermes}
+      - TZ=Asia/Shanghai
+    restart: unless-stopped

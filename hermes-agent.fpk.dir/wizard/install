@@ -1,0 +1,107 @@
+[
+  {
+    "stepTitle": "Dashboard 认证",
+    "items": [
+      {
+        "type": "tips",
+        "helpText": "Hermes Agent 内置 Web Dashboard（端口 9119），建议设置登录凭据。"
+      },
+      {
+        "type": "text",
+        "field": "wizard_auth_username",
+        "initValue": "hermes",
+        "label": "Dashboard 用户名",
+        "rules": [
+          { "required": true, "message": "请输入 Dashboard 用户名" },
+          { "min": 2, "max": 32, "message": "用户名长度应在 2-32 个字符之间" }
+        ]
+      },
+      {
+        "type": "password",
+        "field": "wizard_auth_password",
+        "label": "Dashboard 密码",
+        "initValue": "hermes",
+        "rules": [
+          { "required": true, "message": "请输入 Dashboard 密码" },
+          { "min": 4, "message": "密码长度不能少于 4 位" }
+        ]
+      }
+    ]
+  },
+  {
+    "stepTitle": "数据存储位置",
+    "items": [
+      {
+        "type": "tips",
+        "helpText": "选择 Hermes Agent 的数据存储路径。config/ 和 data/ 子目录将创建在此路径下。\n\n默认使用系统分配路径，如需存到其他位置（如 /vol1/1000/），修改下方路径即可。"
+      },
+      {
+        "type": "text",
+        "field": "wizard_data_path",
+        "label": "数据存储路径",
+        "initValue": "/vol1/@appshare/hermes-agent",
+        "rules": [
+          { "required": true, "message": "请输入数据存储路径" }
+        ]
+      }
+    ]
+  },
+  {
+    "stepTitle": "NAS 文件访问",
+    "items": [
+      {
+        "type": "tips",
+        "helpText": "选择需要挂载到容器中的 NAS 存储卷。挂载后容器可通过 /vol1、/vol2 等路径访问 NAS 文件。不挂载的卷映射到 /dev/null:/ignored，不影响使用。"
+      },
+      {
+        "type": "select",
+        "field": "wizard_nas_vol1",
+        "label": "/vol1",
+        "initValue": "/dev/null:/ignored",
+        "options": [
+          { "label": "不挂载", "value": "/dev/null:/ignored" },
+          { "label": "挂载", "value": "/vol1:/vol1" }
+        ]
+      },
+      {
+        "type": "select",
+        "field": "wizard_nas_vol2",
+        "label": "/vol2",
+        "initValue": "/dev/null:/ignored",
+        "options": [
+          { "label": "不挂载", "value": "/dev/null:/ignored" },
+          { "label": "挂载", "value": "/vol2:/vol2" }
+        ]
+      },
+      {
+        "type": "select",
+        "field": "wizard_nas_vol3",
+        "label": "/vol3",
+        "initValue": "/dev/null:/ignored",
+        "options": [
+          { "label": "不挂载", "value": "/dev/null:/ignored" },
+          { "label": "挂载", "value": "/vol3:/vol3" }
+        ]
+      },
+      {
+        "type": "select",
+        "field": "wizard_nas_vol4",
+        "label": "/vol4",
+        "initValue": "/dev/null:/ignored",
+        "options": [
+          { "label": "不挂载", "value": "/dev/null:/ignored" },
+          { "label": "挂载", "value": "/vol4:/vol4" }
+        ]
+      }
+    ]
+  },
+  {
+    "stepTitle": "安装说明",
+    "items": [
+      {
+        "type": "tips",
+        "helpText": "安装完成后，通过浏览器访问 http://NAS-IP:9119 打开 Dashboard。\n\n初始化方式：Docker 容器打开终端，连接 /bin/bash 可执行 hermes 指令（如 hermes setup 初始化配置）。\n\nHermes Agent 还提供 OpenAI 兼容 API（端口 8642），可在应用设置中启用。"
+      }
+    ]
+  }
+]

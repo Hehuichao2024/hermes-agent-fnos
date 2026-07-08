@@ -1,0 +1,20 @@
+#!/bin/bash
+
+service_postinst() {
+  # 创建必要的数据目录
+  mkdir -p "${TRIM_PKGVAR}/data"
+  mkdir -p "${TRIM_PKGVAR}/config"
+
+  # 如果提供了 API Key，写入配置文件
+  if [ -n "$api_key" ] && [ "$api_key" != "" ]; then
+    mkdir -p "${TRIM_PKGVAR}/config"
+    cat > "${TRIM_PKGVAR}/config/config.yaml" <<- EOC
+providers:
+  default:
+    api_key: ${api_key}
+EOC
+    chmod 600 "${TRIM_PKGVAR}/config/config.yaml"
+  fi
+
+  install_log "Hermes Agent 数据目录已初始化"
+}

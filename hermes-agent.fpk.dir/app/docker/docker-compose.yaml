@@ -1,0 +1,25 @@
+services:
+  hermes-agent:
+    image: nousresearch/hermes-agent:latest
+    container_name: hermes-agent
+    network_mode: host
+    command: gateway run
+    volumes:
+      - ${wizard_data_path:-/vol1/@appshare/hermes-agent}/data:/opt/data
+      - ${wizard_data_path:-/vol1/@appshare/hermes-agent}/config:/opt/config
+      # Dashboard auth 热修复：排除密码 provider 的自动 SSO
+      - ./patches/dashboard_auth/middleware.py:/opt/hermes/hermes_cli/dashboard_auth/middleware.py
+      # NAS 存储卷（select 选项直接传递完整 volume entry）
+      - ${wizard_nas_vol1:-/dev/null:/ignored}
+      - ${wizard_nas_vol2:-/dev/null:/ignored}
+      - ${wizard_nas_vol3:-/dev/null:/ignored}
+      - ${wizard_nas_vol4:-/dev/null:/ignored}
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - HERMES_DASHBOARD=1
+      - HERMES_DASHBOARD_HOST=::
+      - HERMES_DASHBOARD_BASIC_AUTH_USERNAME=${wizard_auth_username:-hermes}
+      - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=${wizard_auth_password:-hermes}
+      - TZ=Asia/Shanghai
+    restart: unless-stopped

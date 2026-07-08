@@ -1,0 +1,34 @@
+[
+  {
+    "stepTitle": "Dashboard 认证",
+    "items": [
+      {
+        "type": "tips",
+        "helpText": "Hermes Agent 内置 Web Dashboard（端口 9119），建议设置登录凭据。"
+      },
+      {
+        "type": "text",
+        "itemKey": "auth_username",
+        "default": "admin",
+        "label": "Dashboard 用户名",
+        "placeholder": "admin"
+      },
+      {
+        "type": "password",
+        "itemKey": "auth_password",
+        "default": "hermes",
+        "label": "Dashboard 密码",
+        "placeholder": "设置一个安全密码"
+      }
+    ]
+  },
+  {
+    "stepTitle": "安装说明",
+    "items": [
+      {
+        "type": "tips",
+        "helpText": "安装完成后，通过浏览器访问 http://NAS-IP:9119 打开 Dashboard。\n\n如需配置 API Key 等高级设置，请进入数据目录编辑 config/config.yaml。\n\nHermes Agent 还提供 OpenAI 兼容 API（端口 8642），可在应用设置中启用。"
+      }
+    ]
+  }
+]

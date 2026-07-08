@@ -1,0 +1,13 @@
+{
+    ".url": {
+        "hermes-agent.Application": {
+            "title": "Hermes",
+            "icon": "images/icon_{0}.png",
+            "type": "url",
+            "protocol": "http",
+            "port": "9119",
+            "url": "/",
+            "allUsers": false
+        }
+    }
+}

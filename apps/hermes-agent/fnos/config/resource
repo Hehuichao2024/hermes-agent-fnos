@@ -1,0 +1,7 @@
+{
+  "data-share": {
+    "name": "hermes-agent-data",
+    "description": "Hermes Agent 数据目录（会话、记忆、技能、配置）",
+    "path": "hermes-agent"
+  }
+}
