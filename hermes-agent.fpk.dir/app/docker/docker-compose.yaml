@@ -23,3 +23,4 @@ services:
       - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=${wizard_auth_password:-hermes}
       - TZ=Asia/Shanghai
     restart: unless-stopped
+
