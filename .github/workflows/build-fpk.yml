@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'hermes-agent.fpk.dir/**'
+      - '.github/workflows/build-fpk.yml'
   workflow_dispatch:
 
 permissions:
