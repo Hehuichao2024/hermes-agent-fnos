@@ -57,3 +57,4 @@ fnpack build -d hermes-agent.fpk.dir
 ```bash
 fnpack install hermes-agent.fpk
 ```
+# GitHub Actions 自动构建
