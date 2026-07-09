@@ -1,6 +1,6 @@
 # Hermes Agent — fnOS 应用包
 
-将 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 打包为 fnOS 标准 `.fpk` 应用包，可通过 fnOS 应用中心一键安装部署。
+使用AI打造，将 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 打包为 fnOS 标准 `.fpk` 应用包，安装后以docker形式运行，可通过 fnOS 应用中心一键安装部署。
 
 ## 项目结构
 
