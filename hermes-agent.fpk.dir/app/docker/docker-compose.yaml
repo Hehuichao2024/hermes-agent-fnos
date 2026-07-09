@@ -18,7 +18,7 @@ services:
       - PUID=1000
       - PGID=1001
       - HERMES_DASHBOARD=1
-      - "HERMES_DASHBOARD_HOST=::"
+      - "HERMES_DASHBOARD_HOST=0.0.0.0"
       - HERMES_DASHBOARD_BASIC_AUTH_USERNAME=${wizard_auth_username:-hermes}
       - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=${wizard_auth_password:-hermes}
       - TZ=Asia/Shanghai
