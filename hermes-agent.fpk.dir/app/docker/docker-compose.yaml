@@ -9,6 +9,9 @@ services:
       - ${wizard_data_path:-/vol1/@appshare/hermes-agent}/config:/opt/config
       # Dashboard auth 热修复：排除密码 provider 的自动 SSO
       - ./patches/dashboard_auth/middleware.py:/opt/hermes/hermes_cli/dashboard_auth/middleware.py
+      # Dual-stack 绑定：IPV6_V6ONLY=0 使 :: 同时接受 IPv4 和 IPv6
+      - ./patches/dual_stack/dual_stack_dashboard.py:/opt/hermes/dual_stack_dashboard.py
+      - ./patches/dual_stack/run:/etc/s6-overlay/s6-rc.d/dashboard/run
       # NAS 存储卷（select 选项直接传递完整 volume entry）
       - ${wizard_nas_vol1:-/dev/null:/ignored}
       - ${wizard_nas_vol2:-/dev/null:/ignored}
@@ -18,7 +21,7 @@ services:
       - PUID=1000
       - PGID=1001
       - HERMES_DASHBOARD=1
-      - "HERMES_DASHBOARD_HOST=0.0.0.0"
+      - "HERMES_DASHBOARD_HOST=::"
       - HERMES_DASHBOARD_BASIC_AUTH_USERNAME=${wizard_auth_username:-hermes}
       - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=${wizard_auth_password:-hermes}
       - TZ=Asia/Shanghai
