@@ -3,7 +3,7 @@
 fpk_backup/
 
 # 构建缓存
-hermes-agent.fpk.dir/app/docker/patches/dashboard_auth/__pycache__/
+hermes-agent.fpk.dir/app/docker/patches/**/__pycache__/
 
 # 编辑器
 .vscode/
